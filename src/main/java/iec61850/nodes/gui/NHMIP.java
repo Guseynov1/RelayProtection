@@ -27,7 +27,7 @@ public class NHMIP extends LN {
 	private final XYSeriesCollection dataset = new XYSeriesCollection();
 	private final JFrame frame = new JFrame("Сигналы");
 
-	private int notifyCount = 200, updatePoint = 100; // counter and schedule update period
+	private int notifyCount = 200;
 	private int passCount = 0; // Skipping transition modes
 
 	private NumberAxis xAxis, yAxis;
@@ -68,6 +68,8 @@ public class NHMIP extends LN {
 			datasets.forEach((a, c) -> c.add((Number) a.getDataX().getValue(), (Number) a.getDataY().getValue(), false));
 
 		/* Update period */
+		// counter and schedule update period
+		int updatePoint = 100;
 		if(notifyCount++ > updatePoint) {
 			notifyCount = 0;
 
@@ -103,11 +105,11 @@ public class NHMIP extends LN {
 	public void drawCharacteristic(String name, List<NHMIPoint<Double, Double>> points) {
 		XYSeries series = new XYSeries(name);
 		dataset.addSeries(series);
-		points.forEach(p -> { if(!p.getValue1().isNaN() && !p.getValue2().isNaN()) series.add(p.getValue1(), p.getValue2(), false); });
+		points.forEach(p -> { if(!p.value1().isNaN() && !p.value2().isNaN()) series.add(p.value1(), p.value2(), false); });
 		series.fireSeriesChanged();
 		process();
-		Double maxX = points.stream().max((o1, o2) -> (int) (o1.getValue1() - o2.getValue1())).get().getValue1();
-		Double maxY = points.stream().max((o1, o2) -> (int) (o1.getValue2() - o2.getValue2())).get().getValue2();
+		Double maxX = points.stream().max((o1, o2) -> (int) (o1.value1() - o2.value1())).get().value1();
+		Double maxY = points.stream().max((o1, o2) -> (int) (o1.value2() - o2.value2())).get().value2();
 		double max = Math.max(maxX, maxY);
 		if(max > currentRange) { currentRange = max; setCurrentRange(max);  }
 	}

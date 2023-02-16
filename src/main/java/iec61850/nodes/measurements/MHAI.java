@@ -15,6 +15,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 @Getter @Setter
 public class MHAI extends LN {
@@ -32,9 +33,9 @@ public class MHAI extends LN {
     private HDEL HPPV = new HDEL(); // Последовательность линейного напряжения гармоник или интергармоник
 
     private int harmNum;
-    private ArrayList<Integer> harmonics = new ArrayList<>(6); // требуемый набор гармоник
+    private List<Integer> harmonics = new ArrayList<>(6); // требуемый набор гармоник
 
-    private ArrayList<HWYE> hinputs = new ArrayList<>();
+    private List<HWYE> hinputs = new ArrayList<>();
     private SPS BlockA = new SPS(), BlockB = new SPS(), BlockC = new SPS();
     private ASG hBlock = new ASG();
 
@@ -47,20 +48,17 @@ public class MHAI extends LN {
 
     public MHAI(int... harmonics){ // заполним массив по ФФ, их экземплярами
         this.harmonics.clear();
-        for(int i = 0; i < harmonics.length; i++){
-            int harmo = harmonics[i];
-            this.harmonics.add(harmo);
+        for (int harmonic : harmonics) {
+            this.harmonics.add(harmonic);
         }
-        for(int i = 0; i < 6; i++){
+        IntStream.range(0, 6).forEach(i -> {
             fIaList.add(new Fourier(i));
             fIbList.add(new Fourier(i));
             fIcList.add(new Fourier(i));
 //            HA.getPhsAHar().add(new Vector());
 //            HA.getPhsBHar().add(new Vector());
 //            HA.getPhsCHar().add(new Vector());
-
-        }
-
+        });
     }
 
     @Override

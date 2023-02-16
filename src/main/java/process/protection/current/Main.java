@@ -85,9 +85,5 @@ public class Main {
             System.out.println(lsvc.getSignals().get(0).getInstMag().getF().getValue());
 
         }
-
     }
-
-
-
 }

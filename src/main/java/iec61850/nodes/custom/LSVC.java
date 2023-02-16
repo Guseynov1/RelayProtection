@@ -3,6 +3,7 @@ package iec61850.nodes.custom;
 import iec61850.nodes.common.LN;
 import iec61850.objects.samples.SAV;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.BufferedReader;
@@ -12,11 +13,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * @description Node for reading Comtrade file
  */
 @Getter @Setter
+@NoArgsConstructor
 public class LSVC extends LN {
 
     private int Ib = 600;
@@ -39,9 +42,6 @@ public class LSVC extends LN {
 
     private float t;
 
-    public LSVC() {
-    }
-
     /** Upload Comtrade file (.cfg) */
     public void readComtrade(String cfgPath){
         cfgFileLines = readFile(cfgPath + ".cfg");
@@ -54,22 +54,17 @@ public class LSVC extends LN {
         int discreteNumber = Integer.parseInt(cfgFileLines.get(1).split(",")[2].replace("D", ""));
         signalNumber = analogNumber + discreteNumber;
 
-        if(signals.size() < signalNumber) {
-            for (int i = 0; i < 100; i++) {
-                signals.add(new SAV());
-            }
+        if (signals.size() < signalNumber) {
+            IntStream.range(0, 100).forEach(i -> signals.add(new SAV()));
         }
 
-
-
         /* Extraction of scaling signals (for analog signals) */
-        for (int i=2; i<(2+analogNumber); i++){
+        IntStream.range(2, 2 + analogNumber).forEach(i -> {
             String line = cfgFileLines.get(i);
             String[] lSplit = line.split(",");
             aBuffer.add(Float.parseFloat(lSplit[5]));
             bBuffer.add(Float.parseFloat(lSplit[6]));
-        }
-
+        });
         System.out.printf("The waveform is loaded, the number of signals: %s, number of samples: %s %n%n", signalNumber, datFileLines.size());
     }
 
@@ -81,7 +76,7 @@ public class LSVC extends LN {
 
             for(int s=0; s < signalNumber; s++){
                 float value = Float.parseFloat(split[s + 2]);
-                if(s < aBuffer.size()) value = value * aBuffer.get(s) + bBuffer.get(s);
+                if (s < aBuffer.size()) value = value * aBuffer.get(s) + bBuffer.get(s);
                 SAV sav = signals.get(s);
                 sav.getInstMag().getF().setValue(value * 1000);
 //                sav.getInstMag().getF().setValue((value * 1000) / Ib); - for relative units

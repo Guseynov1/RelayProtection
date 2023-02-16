@@ -103,13 +103,13 @@ public class Main {
 
 
         /////////////////////////////// мгновенные величины
-        nhmi1.addSignals(new NHMISignal("U1", lsvc.getSignals().get(0).getInstMag().getF()));
-        nhmi1.addSignals(new NHMISignal("U2", lsvc.getSignals().get(1).getInstMag().getF()));
-        nhmi1.addSignals(new NHMISignal("U3", lsvc.getSignals().get(2).getInstMag().getF()));
+        nhmi.addSignals(new NHMISignal("U1", lsvc.getSignals().get(0).getInstMag().getF()));
+        nhmi.addSignals(new NHMISignal("U2", lsvc.getSignals().get(1).getInstMag().getF()));
+        nhmi.addSignals(new NHMISignal("U3", lsvc.getSignals().get(2).getInstMag().getF()));
         ///////////////////////////////
-        nhmi1.addSignals(new NHMISignal("I1", lsvc.getSignals().get(3).getInstMag().getF()));
-        nhmi1.addSignals(new NHMISignal("I2", lsvc.getSignals().get(4).getInstMag().getF()));
-        nhmi1.addSignals(new NHMISignal("I3", lsvc.getSignals().get(5).getInstMag().getF()));
+        nhmi.addSignals(new NHMISignal("I1", lsvc.getSignals().get(3).getInstMag().getF()));
+        nhmi.addSignals(new NHMISignal("I2", lsvc.getSignals().get(4).getInstMag().getF()));
+        nhmi.addSignals(new NHMISignal("I3", lsvc.getSignals().get(5).getInstMag().getF()));
         /////////////////////////////// результат Фурье
 //        nhmi.addSignals("I1Fourier",
 //                new NHMISignal("I1Fourier", msqi.getSeqA().getC1().getcVal().getMag()),
@@ -158,7 +158,6 @@ public class Main {
         while(lsvc.getIterator().hasNext()) {
             lsvc.process();
             nhmi.process();
-            nhmi1.process();
             mmxu.process();
             msqi.process();
             rdir.process();

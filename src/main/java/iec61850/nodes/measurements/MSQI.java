@@ -38,14 +38,11 @@ public class MSQI extends LN {
     private Vector shiftC = new Vector();
 
 
-
-
     @Override
     public void process() {
         calcSEQ(A, SeqA);
         calcSEQ(PhV, SeqV);
         calcS(SeqA, SeqV, SeqS);
-
     }
     private void calcSEQ(WYE input, SEQ output){
 

@@ -49,12 +49,7 @@ public class MMXU extends LN {
     private Vector Zbc = new Vector();
     private Vector Zca = new Vector();
 
-    private float cosFiAB;
-    private float cosFiBC;
-    private float cosFiCA;
-    private float sinFiAB;
-    private float sinFiBC;
-    private float sinFiCA;
+    private float cosFiAB, cosFiBC, cosFiCA, sinFiAB, sinFiBC, sinFiCA;
 
     private Vector Za = new Vector();
     private Vector Zb = new Vector();

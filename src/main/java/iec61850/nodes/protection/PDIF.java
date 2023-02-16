@@ -65,11 +65,7 @@ public class PDIF extends LN {
 
     /** Переменные характеристики срабатывания */
 
-    private float dif0 = 0;
-    private float rst0 = 0;
-    private double dif3a = 0;
-    private double dif3b = 0;
-    private double dif3c = 0;
+    private float dif0, rst0, dif3a, dif3b, dif3c = 0;
 
     private float S1 = 0.25f;
     private float S2 = 0.6f;
@@ -105,25 +101,20 @@ public class PDIF extends LN {
     @Override
     public void process() {
 
-
-
         if (RstA.getPhsA().getCVal().getMag().getF().getValue() < rst0){
             SetPoint.getPhsA().getCVal().getMag().getF().setValue(dif0);
             SetPoint.getPhsB().getCVal().getMag().getF().setValue(dif0);
             SetPoint.getPhsC().getCVal().getMag().getF().setValue(dif0);
 
-            SetPoint.getPhsA().getCVal().getAng().getF().setValue(0.F);
-            SetPoint.getPhsB().getCVal().getAng().getF().setValue(0.F);
-            SetPoint.getPhsC().getCVal().getAng().getF().setValue(0.F);
         } else {
             SetPoint.getPhsA().getCVal().getMag().getF().setValue(dif0 + RstA.getPhsA().getCVal().getMag().getF().getValue() * S - 1000);
             SetPoint.getPhsB().getCVal().getMag().getF().setValue(dif0 + RstA.getPhsB().getCVal().getMag().getF().getValue() * S - 1000);
             SetPoint.getPhsC().getCVal().getMag().getF().setValue(dif0 + RstA.getPhsC().getCVal().getMag().getF().getValue() * S - 1000);
 
-            SetPoint.getPhsA().getCVal().getAng().getF().setValue(0.F);
-            SetPoint.getPhsB().getCVal().getAng().getF().setValue(0.F);
-            SetPoint.getPhsC().getCVal().getAng().getF().setValue(0.F);
         }
+        SetPoint.getPhsA().getCVal().getAng().getF().setValue(0.F);
+        SetPoint.getPhsB().getCVal().getAng().getF().setValue(0.F);
+        SetPoint.getPhsC().getCVal().getAng().getF().setValue(0.F);
 
         /* Блокировка */
         hinputs.forEach(elem -> {
@@ -135,22 +126,21 @@ public class PDIF extends LN {
 //                countA = 0;
 //                countB = 0;
 //                countC = 0;
-            } else {BlkHA.getGeneral().setValue(false);}
+            } else BlkHA.getGeneral().setValue(false);
         });
 
         Str.getPhsA().setValue(DifAClc.getPhsA().getCVal().getMag().getF().getValue() > SetPoint.getPhsA().getCVal().getMag().getF().getValue());
         Str.getPhsB().setValue(DifAClc.getPhsB().getCVal().getMag().getF().getValue() > SetPoint.getPhsB().getCVal().getMag().getF().getValue());
         Str.getPhsC().setValue(DifAClc.getPhsC().getCVal().getMag().getF().getValue() > SetPoint.getPhsC().getCVal().getMag().getF().getValue());
 
-        if(Str.getPhsA().getValue() || Str.getPhsB().getValue() || Str.getPhsC().getValue()) {
+        if (Str.getPhsA().getValue() || Str.getPhsB().getValue() || Str.getPhsC().getValue()) {
             Str.getGeneral().setValue(true);
             counter += swim;
-        } else {Str.getGeneral().setValue(false);
+        } else {
+            Str.getGeneral().setValue(false);
             counter = 0;
         }
-        if(BlkHA.getGeneral().getValue()){
-            counter = 0;
-        }
+        if (BlkHA.getGeneral().getValue()) counter = 0;
 
         Op.getGeneral().setValue(counter >= MinOpTmms.getSetVal());
         Op.getPhsA().setValue(counter >= MinOpTmms.getSetVal());

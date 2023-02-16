@@ -28,7 +28,7 @@ public class NHMI extends LN {
 	private final CombinedDomainXYPlot plot = new CombinedDomainXYPlot(new NumberAxis("Время"));;
 	private final JFrame frame = new JFrame();
 
-	private int notifyCount = 0, updatePoint = 100; // counter and schedule update period
+	private int notifyCount = 0;
 	private double currentTime = 0.0;
 
 
@@ -61,6 +61,8 @@ public class NHMI extends LN {
 		});
 
 		/* Период обновления */
+		// counter and schedule update period
+		int updatePoint = 100;
 		if(notifyCount++ > updatePoint) {
 			notifyCount = 0;
 			datasets.keySet().forEach(Series::fireSeriesChanged);

@@ -20,7 +20,6 @@ public class RMXU extends LN {
     private SAV AmpLocPhsC = new SAV();
     private SAV AmpLocRes = new SAV();
 
-
     private WYE DifAClc = new WYE(); // диф ток
     private WYE RstA = new WYE();
     private List<MMXU> inputs = new ArrayList<>();

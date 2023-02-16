@@ -30,7 +30,7 @@ public class NHMIexample {
                 new NHMISignal("TestSignal1", signal1),
                 new NHMISignal("TestSignal2", signal2));
         nhmi.addSignals(
-                "График",
+                "Schedule",
                 new NHMISignal("TestSignal2", signal2));
 
 
@@ -45,22 +45,19 @@ public class NHMIexample {
         double x0 = 0, y0 = 0, r = 10;
         List<NHMIPoint<Double, Double>> pointsList = new ArrayList<>();
 
-        for(double x= -2*r; x<= 2*r; x += 0.1) {
-            double y = Math.sqrt(Math.pow(r, 2) - Math.pow((x-x0), 2)) + y0;
+        for(double x = -2 * r; x <= 2 * r; x += 0.1) {
+            double y = Math.sqrt(Math.pow(r, 2) - Math.pow((x - x0), 2)) + y0;
             pointsList.add(new NHMIPoint<>(x, y));
             pointsList.add(new NHMIPoint<>(x, -y));
         }
         nhmip.drawCharacteristic("Characteristic", pointsList);
 
 
-
-        for(double i = 1; i<101; i++){
+        for(double i = 1; i < 101; i++){
             signal1.setValue(1 * i);
             signal2.setValue(2 * i);
 
             logicalNodes.forEach(LN::process);
         }
     }
-
-
 }

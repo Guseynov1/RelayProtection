@@ -69,14 +69,9 @@ public class PDIS extends LN {
         Str.getGeneral().setValue
                 (Str.getPhsA().getValue() || Str.getPhsB().getValue() || Str.getPhsC().getValue());
 
-        if (Str.getGeneral().getValue()) {
-            count += counter;
-        } else {
-            count = 0;
-        }
-        if (BlkStr.getGeneral().getValue()) {
-            count = 0;
-        }
+        if (Str.getGeneral().getValue()) count += counter;
+        else count = 0;
+        if (BlkStr.getGeneral().getValue()) count = 0;
         Op.getGeneral().setValue(count > OpDlTmms.getSetVal());
     }
 
