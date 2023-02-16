@@ -9,11 +9,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 @Getter @Setter
 public class PTRC extends LN {
 
-    private ArrayList<ACT> Op = new ArrayList<>();
+    private List<ACT> Op = new ArrayList<>();
     private ACT Tr = new ACT();
     private ACD Str = new ACD();
     private INC OpCntRs = new INC();
@@ -27,10 +29,7 @@ public class PTRC extends LN {
             if (Op.get(i).getGeneral().getValue()) {
                 Tr.getGeneral().setValue(true);
                 break;
-            } else {
-                Tr.getGeneral().setValue(false);
-            }
-
+            } else Tr.getGeneral().setValue(false);
         }
     }
 

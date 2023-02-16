@@ -6,13 +6,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter @Setter
 public class HDEL extends LN {
 
-    private ArrayList<Vector> phsABHar = new ArrayList<>();
-    private ArrayList<Vector> phsBCHar = new ArrayList<>();
-    private ArrayList<Vector> phsCAHar = new ArrayList<>();
+    private List<Vector> phsABHar = new ArrayList<>();
+    private List<Vector> phsBCHar = new ArrayList<>();
+    private List<Vector> phsCAHar = new ArrayList<>();
 
     @Override
     public void process() {

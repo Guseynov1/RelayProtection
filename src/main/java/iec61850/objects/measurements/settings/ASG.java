@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class ASG { // analog setpoint
-    private AnalogValue setVal = new AnalogValue();
+public class ASG { // analog set-point
+    private AnalogValue setVal = new AnalogValue(); // when setting the setVal value, it must be greater than min and less than max
     private AnalogValue SetMag = new AnalogValue();
 
     private AnalogValue SetMagA = new AnalogValue();
@@ -16,6 +16,4 @@ public class ASG { // analog setpoint
     private AnalogValue minVal = new AnalogValue();
     private AnalogValue maxVal = new AnalogValue();
     private AnalogValue stepSize = new AnalogValue();
-    // при установке значения setVal, оно должно быть больше min и меньше max
-
 }

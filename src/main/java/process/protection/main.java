@@ -3,7 +3,6 @@ package process.protection;
 import iec61850.nodes.custom.LSTB;
 import iec61850.nodes.gui.NHMI;
 import iec61850.nodes.gui.other.NHMISignal;
-import iec61850.nodes.measurements.MMXU1;
 import iec61850.nodes.measurements.control.CSWI;
 import iec61850.nodes.measurements.control.primary.XCBR;
 import iec61850.nodes.protection.PTOC;

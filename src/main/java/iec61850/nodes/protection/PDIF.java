@@ -87,9 +87,6 @@ public class PDIF extends LN {
 
     private static final double swim = 1;
 
-
-
-
     public void setting(){
 
         /* Построение характеристики */
@@ -103,14 +100,7 @@ public class PDIF extends LN {
 //        S1 = TmASt.getCrvPts().get(2).getCoef().getValue();
 //        S2 = TmASt.getCrvPts().get(3).getCoef().getValue();
 
-
-
-
-
-
     }
-
-
 
     @Override
     public void process() {

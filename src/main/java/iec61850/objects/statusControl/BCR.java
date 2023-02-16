@@ -14,16 +14,10 @@ public class BCR extends LN { // reading the binary counter readings
     private Attribute<Boolean> frEna = new Attribute<>(false);
     private Attribute<Integer> frPd = new Attribute<>(0);
     private Attribute<Boolean> frRs = new Attribute<>(false);
-    private String d;
-    private String dU;
-    private String cdcNs;
-    private String cdcName;
-    private String dataNs;
-
+    private String d, dU, cdcNs, cdcName, dataNs;
 
     @Override
     public void process() {
 
     }
-
 }

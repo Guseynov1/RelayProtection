@@ -49,9 +49,7 @@ public class PTOC extends LN {
         Str.getPhsB().setValue(phsB);
         Str.getPhsC().setValue(phsC);
 
-        if (general) {
-            counter += 0.25;
-        }
+        if (general) counter += 0.25;
 
         Op.getGeneral().setValue(counter > OpDlTmms.getSetVal());
         Op.getPhsA().setValue(counter > OpDlTmms.getSetVal());
@@ -60,10 +58,7 @@ public class PTOC extends LN {
 
 
     }
-
-
-
-        }
+}
 
 
 

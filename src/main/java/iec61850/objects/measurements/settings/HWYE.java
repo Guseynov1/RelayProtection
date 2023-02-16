@@ -7,14 +7,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+
 @Getter @Setter
 public class HWYE extends LN { // harmonic composition of the signal
 
 
-    private ArrayList<Vector> phsAHar = new ArrayList<>();
-    private ArrayList<Vector> phsBHar = new ArrayList<>();
-    private ArrayList<Vector> phsCHar = new ArrayList<>();
-    private ArrayList<Vector> neutHar = new ArrayList<>();
+    private List<Vector> phsAHar = new ArrayList<>();
+    private List<Vector> phsBHar = new ArrayList<>();
+    private List<Vector> phsCHar = new ArrayList<>();
+    private List<Vector> neutHar = new ArrayList<>();
 
     private Attribute<Integer> numHar = new Attribute<>(6);
 
@@ -25,18 +28,11 @@ public class HWYE extends LN { // harmonic composition of the signal
     }
 
     public HWYE(){
-        for(int i=0; i< numHar.getValue(); i++){
+        IntStream.range(0, numHar.getValue()).forEach(i -> {
             phsAHar.add(new Vector());
             phsBHar.add(new Vector());
             phsCHar.add(new Vector());
             neutHar.add(new Vector());
-
-
-
-        }
+        });
     }
-
-
-
-
 }
