@@ -51,16 +51,9 @@ public class MMXU extends LN {
 
     private float cosFiAB, cosFiBC, cosFiCA, sinFiAB, sinFiBC, sinFiCA;
 
-    private Vector Za = new Vector();
-    private Vector Zb = new Vector();
-    private Vector Zc = new Vector();
-    private Vector Iab = new Vector();
-    private Vector Ibc = new Vector();
-    private Vector Ica = new Vector();
-
-    private Vector Uab = new Vector();
-    private Vector Ubc = new Vector();
-    private Vector Uca = new Vector();
+    private Vector Za = new Vector(), Zb = new Vector(), Zc = new Vector();
+    private Vector Iab = new Vector(), Ibc = new Vector(), Ica = new Vector();
+    private Vector Uab = new Vector(), Ubc = new Vector(), Uca = new Vector();
 
     private Filter fIa = new Fourier( 1), fIb = new Fourier( 1), fIc = new Fourier( 1);
     private Filter fUa = new Fourier( 1), fUb = new Fourier( 1), fUc = new Fourier( 1);

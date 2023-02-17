@@ -22,12 +22,8 @@ public class CSWI extends LN {
     private ACT OpOpn = new ACT();
     private ACT OpCls = new ACT();
 
-    private ACT OpOpn1 = new ACT(); // отключить выключатель
-    private ACT OpOpn2 = new ACT();
-    private ACT OpOpn3 = new ACT();
-    private ACT OpOpn4 = new ACT();
-    private ACT OpOpn5 = new ACT();
-
+    // отключить выключатель
+    private ACT OpOpn1 = new ACT(), OpOpn2 = new ACT(), OpOpn3 = new ACT(), OpOpn4 = new ACT(), OpOpn5 = new ACT();
     private double count = 0;
 
     @Override

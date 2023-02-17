@@ -13,7 +13,10 @@ public class Point extends LN {
     private Attribute<Float> yVal = new Attribute<>((float) 0);
     private Attribute<Float> Coefficient = new Attribute<>((float) 0);
 
-    public Point(Float x, Float y) {xVal.setValue(x); yVal.setValue(y);}
+    public Point(Float x, Float y) {
+        xVal.setValue(x);
+        yVal.setValue(y);
+    }
 
 
     public void setValue(float coef, float RstCur){

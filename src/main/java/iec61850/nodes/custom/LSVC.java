@@ -40,8 +40,6 @@ public class LSVC extends LN {
 
     private int signalNumber;
 
-    private float t;
-
     /** Upload Comtrade file (.cfg) */
     public void readComtrade(String cfgPath){
         cfgFileLines = readFile(cfgPath + ".cfg");
@@ -79,10 +77,7 @@ public class LSVC extends LN {
                 if (s < aBuffer.size()) value = value * aBuffer.get(s) + bBuffer.get(s);
                 SAV sav = signals.get(s);
                 sav.getInstMag().getF().setValue(value * 1000);
-//                sav.getInstMag().getF().setValue((value * 1000) / Ib); - for relative units
-
             }
-
         }
     }
 

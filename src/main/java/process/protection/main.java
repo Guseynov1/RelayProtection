@@ -3,6 +3,7 @@ package process.protection;
 import iec61850.nodes.custom.LSTB;
 import iec61850.nodes.gui.NHMI;
 import iec61850.nodes.gui.other.NHMISignal;
+import iec61850.nodes.measurements.MMXU;
 import iec61850.nodes.measurements.control.CSWI;
 import iec61850.nodes.measurements.control.primary.XCBR;
 import iec61850.nodes.protection.PTOC;
@@ -13,7 +14,7 @@ public class main {
 
         NHMI nhmi = new NHMI();
         LSTB lstb = new LSTB();
-        MMXU1 mmxu = new MMXU1();
+        MMXU mmxu = new MMXU();
         PTOC ptoc = new PTOC();
         CSWI cswi = new CSWI();
         XCBR xcbr = new XCBR();

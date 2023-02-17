@@ -7,10 +7,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
+import java.util.List;
+
 @Getter @Setter
 public class CSD extends LN { // describes the braking performance
 
-    private ArrayList<Point> crvPts = new ArrayList<>();
+    private List<Point> crvPts = new ArrayList<>();
     private Attribute<Integer> numPts = new Attribute<>(0); // number of points in the curve
 
 

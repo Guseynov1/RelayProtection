@@ -34,12 +34,6 @@ public class MHAI extends LN {
 
     private int harmNum;
     private List<Integer> harmonics = new ArrayList<>(6); // требуемый набор гармоник
-
-    private List<HWYE> hinputs = new ArrayList<>();
-    private SPS BlockA = new SPS(), BlockB = new SPS(), BlockC = new SPS();
-    private ASG hBlock = new ASG();
-
-    private boolean trip = false;
     private HWYE HA = new HWYE(); // Последовательность тока гармоник или интергармоник
 
     /** Входные сигналы */
@@ -55,9 +49,6 @@ public class MHAI extends LN {
             fIaList.add(new Fourier(i));
             fIbList.add(new Fourier(i));
             fIcList.add(new Fourier(i));
-//            HA.getPhsAHar().add(new Vector());
-//            HA.getPhsBHar().add(new Vector());
-//            HA.getPhsCHar().add(new Vector());
         });
     }
 

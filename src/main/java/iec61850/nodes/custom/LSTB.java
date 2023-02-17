@@ -13,13 +13,8 @@ public class LSTB extends LN {
     private List<SAV> signals = new ArrayList<>();
     private float t;
     float f = 50;
-    private SAV instIa1 = new SAV();
-    private SAV instIb1 = new SAV();
-    private SAV instIc1 = new SAV();
-
-    private SAV instUa1 = new SAV();
-    private SAV instUb1 = new SAV();
-    private SAV instUc1 = new SAV();
+    private SAV instIa1 = new SAV(), instIb1 = new SAV(), instIc1 = new SAV();
+    private SAV instUa1 = new SAV(), instUb1 = new SAV(), instUc1 = new SAV();
 
 
     @Override
@@ -27,6 +22,7 @@ public class LSTB extends LN {
 
         SAV sav = new SAV();
         SAV sav1 = new SAV();
+
             if(t < 2000){
                 sav.getInstMag().getF().setValue((float) (100 * Math.sin(2 * Math.PI * f * (0.02 * t) / 80)));
                 sav1.getInstMag().getF().setValue((float) (220 * Math.sin(2 * Math.PI * f * (0.02 * t) / 80)));
