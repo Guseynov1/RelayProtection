@@ -57,12 +57,12 @@ public class RMXU extends LN {
 
         }
 
-        // заполним диф ток
+        // диф ток
         DifAClc.getPhsA().getCVal().setValue0(difAx, difAy);
         DifAClc.getPhsB().getCVal().setValue0(difBx, difBy);
         DifAClc.getPhsC().getCVal().setValue0(difCx, difCy);
 
-        // заполним тормозной ток
+        // тормозной ток
         RstA.getPhsA().getCVal().getMag().getF().setValue(RstCur.getMag().getF().getValue());
         RstA.getPhsB().getCVal().getMag().getF().setValue(RstCur.getMag().getF().getValue());
         RstA.getPhsC().getCVal().getMag().getF().setValue(RstCur.getMag().getF().getValue());

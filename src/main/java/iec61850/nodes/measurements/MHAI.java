@@ -21,9 +21,7 @@ import java.util.stream.IntStream;
 public class MHAI extends LN {
 
     private SAV Ia, Ib, Ic;
-    private List<Fourier> fIaList = new ArrayList<>();
-    private List<Fourier> fIbList = new ArrayList<>();
-    private List<Fourier> fIcList = new ArrayList<>();
+    private List<Fourier> fIaList = new ArrayList<>(), fIbList = new ArrayList<>(), fIcList = new ArrayList<>();
 
     private MV Hz = new MV(); // основная частота
     private HWYE HPhV = new HWYE(); // Последовательность фазного напряжения гармоник или интергармоник
@@ -32,7 +30,6 @@ public class MHAI extends LN {
     private HWYE HVA = new HWYE(); // Последовательность фиксируемой мощности гармоник или интергармоник
     private HDEL HPPV = new HDEL(); // Последовательность линейного напряжения гармоник или интергармоник
 
-    private int harmNum;
     private List<Integer> harmonics = new ArrayList<>(6); // требуемый набор гармоник
     private HWYE HA = new HWYE(); // Последовательность тока гармоник или интергармоник
 
@@ -54,7 +51,7 @@ public class MHAI extends LN {
 
     @Override
     public void process() { // расчет гармоник
-        for(int h: harmonics){ // указали какие гарм необх перечислять из нашего массива гармоник harmonics
+        for(int h : harmonics){ // указали какие гарм необх перечислять из нашего массива гармоник harmonics
             fIaList.get(h).process(instIa, HA.getPhsAHar().get(h));
             fIbList.get(h).process(instIb, HA.getPhsBHar().get(h));
             fIcList.get(h).process(instIc, HA.getPhsCHar().get(h));

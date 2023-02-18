@@ -10,5 +10,8 @@
       <option name="REPORT_INDEXED_LOOP" value="false" />
       <option name="ignoreUntypedCollections" value="false" />
     </inspection_tool>
+    <inspection_tool class="JavadocDeclaration" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ADDITIONAL_TAGS" value="description" />
+    </inspection_tool>
   </profile>
 </component>

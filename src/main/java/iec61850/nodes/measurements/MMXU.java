@@ -3,6 +3,7 @@ package iec61850.nodes.measurements;
 import iec61850.nodes.common.LN;
 import iec61850.nodes.measurements.filter.Filter;
 import iec61850.nodes.measurements.filter.Fourier;
+import iec61850.objects.measurements.CMV;
 import iec61850.objects.measurements.DEL;
 import iec61850.objects.measurements.Vector;
 import iec61850.objects.measurements.WYE;
@@ -35,19 +36,11 @@ public class MMXU extends LN {
     private DEL PPZ = new DEL(); // междуфазное сопротивление
 
     // входные сигналы
-    private SAV instIa = new SAV();
-    private SAV instIb = new SAV();
-    private SAV instIc = new SAV();
-
-    private SAV instUa = new SAV();
-    private SAV instUb = new SAV();
-    private SAV instUc = new SAV();
-
+    private SAV instIa = new SAV(), instIb = new SAV(), instIc = new SAV();
+    private SAV instUa = new SAV(), instUb = new SAV(), instUc = new SAV();
 
     private DEL Zi = new DEL();
-    private Vector Zab = new Vector();
-    private Vector Zbc = new Vector();
-    private Vector Zca = new Vector();
+    private Vector Zab = new Vector(), Zbc = new Vector(), Zca = new Vector();
 
     private float cosFiAB, cosFiBC, cosFiCA, sinFiAB, sinFiBC, sinFiCA;
 
@@ -71,9 +64,9 @@ public class MMXU extends LN {
         fUb.process(instUb, PhV.getPhsB().getCVal());
         fUc.process(instUc, PhV.getPhsC().getCVal());
 
-        float sa = PhV.getPhsA().getCVal().getMag().getF().getValue() * A.getPhsA().getCVal().getMag().getF().getValue();
-        float sb = PhV.getPhsB().getCVal().getMag().getF().getValue() * A.getPhsB().getCVal().getMag().getF().getValue();
-        float sc = PhV.getPhsC().getCVal().getMag().getF().getValue() * A.getPhsC().getCVal().getMag().getF().getValue();
+        float sa = S(PhV, A, "A");
+        float sb = S(PhV, A, "B");
+        float sc = S(PhV, A, "C");
         // полная мощность
         float s = sa + sb + sc;
 
@@ -186,15 +179,9 @@ public class MMXU extends LN {
         return angle;
     }
 
-
-
-
-    //        PPZ.getPhsAB().getCVal().getAng().getF().setValue((float) Za_bAngle);
+//        PPZ.getPhsAB().getCVal().getAng().getF().setValue((float) Za_bAngle);
 //        PPZ.getPhsBC().getCVal().getAng().getF().setValue((float) Zb_cAngle);
 //        PPZ.getPhsCA().getCVal().getAng().getF().setValue((float) Zc_aAngle);
-
-
-
 
 
 //        Uab.setValue0((PhV.getPhsA().getCVal().getOrtX().getF().getValue() - PhV.getPhsB().getCVal().getOrtX().getF().getValue()),
@@ -244,4 +231,13 @@ public class MMXU extends LN {
 //        Z.getPhsB().setCVal(Zb);
 //        Z.getPhsC().setCVal(Zc);
 
+    public float S(WYE PhV, WYE A, String Phase) {
+        float S = 0;
+        switch (Phase){
+            case "A" -> S = PhV.getPhsA().getCVal().getMag().getF().getValue() * A.getPhsA().getCVal().getMag().getF().getValue();
+            case "B" -> S = PhV.getPhsB().getCVal().getMag().getF().getValue() * A.getPhsB().getCVal().getMag().getF().getValue();
+            case "C" -> S = PhV.getPhsC().getCVal().getMag().getF().getValue() * A.getPhsC().getCVal().getMag().getF().getValue();
+        }
+        return S;
+    }
 }

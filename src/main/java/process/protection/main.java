@@ -20,13 +20,13 @@ public class main {
         XCBR xcbr = new XCBR();
 
 
-        mmxu.setInstIa1(lstb.getInstIa1());
-        mmxu.setInstIb1(lstb.getInstIb1());
-        mmxu.setInstIc1(lstb.getInstIc1());
+        mmxu.setInstIa1(lstb.getInstIa());
+        mmxu.setInstIb1(lstb.getInstIb());
+        mmxu.setInstIc1(lstb.getInstIc());
 
-        mmxu.setInstUa1(lstb.getInstUa1());
-        mmxu.setInstUb1(lstb.getInstUb1());
-        mmxu.setInstUc1(lstb.getInstUc1());
+        mmxu.setInstUa1(lstb.getInstUa());
+        mmxu.setInstUb1(lstb.getInstUb());
+        mmxu.setInstUc1(lstb.getInstUc());
 
         ptoc.getStrVal().getSetVal().getF().setValue(600f);
         ptoc.getOpDlTmms().setSetVal(100);

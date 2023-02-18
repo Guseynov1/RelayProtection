@@ -66,8 +66,7 @@ public class PDIS extends LN {
         Str.getPhsC().setValue(Math.pow(PPZ.getPhsCA().getCVal().getOrtX().getF().getValue() - x0, 2) +
                 Math.pow(PPZ.getPhsCA().getCVal().getOrtY().getF().getValue() - y0, 2) < Math.pow(r, 2));
 
-        Str.getGeneral().setValue
-                (Str.getPhsA().getValue() || Str.getPhsB().getValue() || Str.getPhsC().getValue());
+        Str.getGeneral().setValue(Str.getPhsA().getValue() || Str.getPhsB().getValue() || Str.getPhsC().getValue());
 
         if (Str.getGeneral().getValue()) count += counter;
         else count = 0;

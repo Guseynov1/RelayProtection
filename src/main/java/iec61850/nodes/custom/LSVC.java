@@ -22,8 +22,6 @@ import java.util.stream.IntStream;
 @NoArgsConstructor
 public class LSVC extends LN {
 
-    private int Ib = 600;
-
     private List<SAV> signals = new ArrayList<>();
 
     /** Read CFG file */
@@ -31,13 +29,8 @@ public class LSVC extends LN {
 
     /** Read DAT file */
     private List<String> datFileLines = new ArrayList<>();
-
-    private List<Float> aBuffer = new ArrayList<>();
-
-    private List<Float> bBuffer = new ArrayList<>();
-
+    private List<Float> aBuffer = new ArrayList<>(), bBuffer = new ArrayList<>();
     private Iterator<String> iterator;
-
     private int signalNumber;
 
     /** Upload Comtrade file (.cfg) */
@@ -71,13 +64,12 @@ public class LSVC extends LN {
     public void process() {
         if(iterator.hasNext()){
             String[] split = iterator.next().split(",");
-
-            for(int s=0; s < signalNumber; s++){
+            IntStream.range(0, signalNumber).forEach(s -> {
                 float value = Float.parseFloat(split[s + 2]);
                 if (s < aBuffer.size()) value = value * aBuffer.get(s) + bBuffer.get(s);
                 SAV sav = signals.get(s);
                 sav.getInstMag().getF().setValue(value * 1000);
-            }
+            });
         }
     }
 
@@ -94,7 +86,7 @@ public class LSVC extends LN {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             String line = bufferedReader.readLine();
-            while(line!=null){
+            while(line != null){
                 fileEntry.add(line);
                 line = bufferedReader.readLine();
             }

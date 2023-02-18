@@ -31,26 +31,17 @@ public class RDIR extends LN {
 
     @Override
     public void process() { // направление фаз по знаку активной мощности
-        if (W.getPhsA().getCVal().getMag().getF().getValue() < 0) {
-            Dir.getDirPhsA().setValue(Direction.BACKWARD);
-        }
+        if (W.getPhsA().getCVal().getMag().getF().getValue() < 0) Dir.getDirPhsA().setValue(Direction.BACKWARD);
         else Dir.getDirPhsA().setValue(Direction.FORWARD);
 
-        if (W.getPhsB().getCVal().getMag().getF().getValue() < 0) {
-            Dir.getDirPhsB().setValue(Direction.BACKWARD);
-        }
+        if (W.getPhsB().getCVal().getMag().getF().getValue() < 0) Dir.getDirPhsB().setValue(Direction.BACKWARD);
         else Dir.getDirPhsB().setValue(Direction.FORWARD);
 
-        if (W.getPhsC().getCVal().getMag().getF().getValue() < 0) {
-            Dir.getDirPhsC().setValue(Direction.BACKWARD);
-        }
+        if (W.getPhsC().getCVal().getMag().getF().getValue() < 0) Dir.getDirPhsC().setValue(Direction.BACKWARD);
         else Dir.getDirPhsC().setValue(Direction.FORWARD);
 
-
-
-        if (Dir.getDirPhsA().getValue() == Direction.BACKWARD &&
-                (Dir.getDirPhsB().getValue() == Direction.FORWARD &&
-                        Dir.getDirPhsC().getValue() == Direction.FORWARD)){
+        if (Dir.getDirPhsA().getValue() == Direction.BACKWARD && (Dir.getDirPhsB().getValue() == Direction.FORWARD &&
+                        Dir.getDirPhsC().getValue() == Direction.FORWARD)) {
             Dir.getDirGeneral().setValue(Direction.FORWARD);
         }
         else Dir.getDirGeneral().setValue(Direction.BACKWARD);

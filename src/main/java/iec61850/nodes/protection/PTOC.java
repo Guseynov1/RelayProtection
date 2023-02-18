@@ -36,9 +36,7 @@ public class PTOC extends LN {
         boolean phsC;
 
         phsA = A.getPhsA().getCVal().getMag().getF().getValue() > StrVal.getSetVal().getF().getValue();
-
         phsB = A.getPhsB().getCVal().getMag().getF().getValue() > StrVal.getSetVal().getF().getValue();
-
         phsC = A.getPhsC().getCVal().getMag().getF().getValue() > StrVal.getSetVal().getF().getValue();
 
 

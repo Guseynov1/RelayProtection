@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter @Setter
 @NoArgsConstructor
-public class Point extends LN {
+public class Point {
 
     private Attribute<Float> xVal = new Attribute<>((float) 0);
     private Attribute<Float> yVal = new Attribute<>((float) 0);
@@ -24,11 +24,4 @@ public class Point extends LN {
         yVal.setValue(RstCur * coef);
         Coefficient.setValue(coef);
     }
-
-
-    @Override
-    public void process() {
-
-    }
-
 }
